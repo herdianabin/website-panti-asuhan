@@ -1,0 +1,1703 @@
+@import "tailwindcss";
+
+/* =========================================
+   1. DASAR WEBSITE
+========================================= */
+
+:root {
+  --navy: #082f6b;
+  --navy-dark: #061f49;
+  --blue: #155eef;
+  --blue-light: #2878ff;
+  --cyan: #22d3ee;
+  --yellow: #ffb800;
+  --green: #00b887;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  color: #172b4d;
+  background: var(--navy);
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================================
+   2. BACKGROUND
+========================================= */
+
+.site-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--navy);
+}
+
+.site-shell::before {
+  position: fixed;
+  z-index: -2;
+  inset: 0;
+  content: "";
+  background: url("/images/gedung-panti.jpg") center / cover;
+  filter: saturate(0.75);
+  transform: scale(1.03);
+}
+
+.site-shell::after {
+  position: fixed;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  background: linear-gradient(
+    135deg,
+    rgba(5, 35, 79, 0.94),
+    rgba(10, 70, 145, 0.91),
+    rgba(5, 76, 119, 0.94)
+  );
+  pointer-events: none;
+}
+
+/* =========================================
+   3. NAVBAR
+========================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.97);
+  border-bottom: 1px solid rgba(15, 45, 90, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 20, 60, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.navbar {
+  width: min(1550px, 92%);
+  min-height: 88px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  flex-shrink: 0;
+}
+
+.brand img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+}
+
+.brand span {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand strong {
+  color: #142c60;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.brand small {
+  color: #0867ed;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.desktop-nav a {
+  position: relative;
+  padding: 10px 0;
+  color: #1d2b45;
+  font-size: 15px;
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.desktop-nav a::after {
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  content: "";
+  border-radius: 5px;
+  background: var(--blue);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.desktop-nav a:hover {
+  color: var(--blue);
+}
+
+.desktop-nav a:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-donate {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 24px;
+  border-radius: 50px;
+  color: #102b58;
+  background: var(--yellow);
+  font-weight: 900;
+  white-space: nowrap;
+  transition: 0.3s ease;
+}
+
+.nav-donate:hover {
+  transform: translateY(-3px);
+  background: #ffc933;
+}
+
+.mobile-toggle {
+  display: none;
+  width: 43px;
+  height: 43px;
+  border: none;
+  border-radius: 10px;
+  background: #eef5ff;
+  color: var(--navy);
+  font-size: 23px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+}
+
+/* =========================================
+   4. HERO
+========================================= */
+
+.hero {
+  position: relative;
+  min-height: 690px;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: url("/images/gedung-panti.jpg") center 45% / cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 36, 75, 0.95),
+    rgba(8, 68, 133, 0.78),
+    rgba(5, 75, 120, 0.58)
+  );
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.12;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.6) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(1300px, 90%);
+  margin: auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  background: rgba(0, 150, 150, 0.32);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.hero-badge span {
+  color: var(--yellow);
+  font-size: 20px;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin: 28px 0 24px;
+  color: white;
+  font-size: clamp(40px, 5.5vw, 70px);
+  font-weight: 900;
+  line-height: 1.18;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  display: block;
+  margin-top: 10px;
+  color: var(--yellow);
+}
+
+.hero-content > p {
+  max-width: 750px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 30px;
+}
+
+.btn-yellow,
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 53px;
+  padding: 14px 25px;
+  border-radius: 50px;
+  font-weight: 900;
+  transition: 0.3s ease;
+}
+
+.btn-yellow {
+  color: #092b59;
+  background: var(--yellow);
+}
+
+.btn-yellow:hover {
+  background: #ffd04e;
+  transform: translateY(-4px);
+}
+
+.btn-outline {
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.17);
+  transform: translateY(-4px);
+}
+
+.hero-highlight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  max-width: 490px;
+  margin-top: 55px;
+  padding: 18px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 17px;
+  background: rgba(255, 255, 255, 0.13);
+  color: white;
+  backdrop-filter: blur(12px);
+}
+
+.highlight-icon {
+  width: 45px;
+  height: 45px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: white;
+  background: var(--green);
+  font-size: 21px;
+}
+
+.hero-highlight div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.hero-highlight strong {
+  font-size: 14px;
+}
+
+.hero-highlight span {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+/* =========================================
+   5. SECTION UMUM
+========================================= */
+
+.content-section {
+  position: relative;
+  padding: 100px 0;
+  background: linear-gradient(
+    135deg,
+    rgba(5, 35, 79, 0.76),
+    rgba(10, 65, 135, 0.72),
+    rgba(5, 76, 119, 0.78)
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-inner {
+  position: relative;
+  z-index: 1;
+  width: min(1300px, 90%);
+  margin: auto;
+}
+
+.section-heading {
+  max-width: 800px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.section-label {
+  display: inline-block;
+  margin-bottom: 13px;
+  color: #7deaff;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 3px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: white;
+  font-size: clamp(30px, 4vw, 43px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   6. TENTANG KAMI
+========================================= */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.about-photo {
+  position: relative;
+  overflow: hidden;
+  border: 8px solid rgba(255, 255, 255, 0.18);
+  border-radius: 25px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.24);
+}
+
+.about-photo > img {
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  transition: transform 0.7s ease;
+}
+
+.about-photo:hover > img {
+  transform: scale(1.05);
+}
+
+.photo-caption {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 18px 20px;
+  border-radius: 15px;
+  color: #17345e;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+}
+
+.photo-caption strong {
+  color: var(--blue);
+  font-size: 16px;
+}
+
+.photo-caption span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.about-label {
+  color: #80edff;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.about-content h3 {
+  margin: 15px 0 20px;
+  color: white;
+  font-size: 30px;
+  font-weight: 900;
+  line-height: 1.3;
+}
+
+.about-content > p {
+  margin: 0 0 25px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.info-panel {
+  margin-top: 17px;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+.info-panel h4 {
+  margin: 0 0 12px;
+  color: #155eef;
+  font-size: 20px;
+}
+
+.info-panel p {
+  margin: 0;
+  color: #4b5f7b;
+  line-height: 1.8;
+}
+
+.info-panel.cyan h4 {
+  color: #0085a5;
+}
+
+/* =========================================
+   7. KEGIATAN
+========================================= */
+
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 25px;
+}
+
+.activity-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.23);
+}
+
+.activity-image {
+  height: 220px;
+  overflow: hidden;
+}
+
+.activity-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.65s ease;
+}
+
+.activity-card:hover .activity-image img {
+  transform: scale(1.08);
+}
+
+.activity-body {
+  padding: 24px;
+}
+
+.activity-body h3 {
+  margin: 0 0 12px;
+  color: #10366e;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.activity-body p {
+  margin: 0;
+  color: #596a82;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   8. GALERI
+========================================= */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  display: block;
+  height: 270px;
+  overflow: hidden;
+  padding: 0;
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  border-radius: 19px;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.gallery-card span {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 18px 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  background: linear-gradient(
+    transparent,
+    rgba(0, 20, 50, 0.85)
+  );
+  opacity: 0;
+  transform: translateY(10px);
+  transition: 0.35s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.1);
+}
+
+.gallery-card:hover span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================
+   9. DONASI
+========================================= */
+
+.donation-section {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 0;
+  background: linear-gradient(
+    120deg,
+    rgba(3, 32, 75, 0.97),
+    rgba(13, 79, 160, 0.95),
+    rgba(4, 95, 135, 0.96)
+  );
+}
+
+.donation-inner {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 55px;
+  width: min(1300px, 90%);
+  margin: auto;
+}
+
+.section-label.light {
+  color: #80edff;
+}
+
+.donation-copy h2 {
+  margin: 15px 0 20px;
+  color: white;
+  font-size: clamp(32px, 4vw, 46px);
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.donation-copy > p {
+  margin: 0 0 28px;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.9;
+}
+
+.donation-options {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  min-width: 0;
+}
+
+.donation-option {
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 22px;
+  background: white;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.16);
+  transition: transform 0.35s ease;
+}
+
+.donation-option:hover {
+  transform: translateY(-6px);
+}
+
+.donation-emoji {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 205px;
+}
+
+.donation-emoji.money {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+}
+
+.donation-emoji.goods {
+  background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+}
+
+.donation-emoji span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 65px;
+  transition: transform 0.4s ease;
+}
+
+.donation-option:hover .donation-emoji span {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.donation-option-content {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+}
+
+.donation-option-content h3 {
+  margin: 0 0 12px;
+  color: #10366e;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.donation-option-content p {
+  margin: 0 0 17px;
+  color: #64748b;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.donation-option-content a {
+  color: #155eef;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+/* =========================================
+   10. REKENING DONASI
+========================================= */
+
+.bank-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 560px));
+  align-items: stretch;
+  justify-content: center;
+  gap: 24px;
+}
+
+.bank-card {
+  width: 100%;
+  min-width: 0;
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.22);
+}
+
+.bank-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #e5edf7;
+}
+
+.bank-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #087b48;
+  font-size: 25px;
+  font-weight: 900;
+}
+
+.bank-logo img {
+  width: 90px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.bank-badge {
+  padding: 8px 12px;
+  border-radius: 30px;
+  color: #087b48;
+  background: #e5f8ef;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.bank-information {
+  padding: 28px 0;
+}
+
+.bank-label {
+  color: #718198;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+
+.bank-number {
+  margin: 12px 0 25px;
+  color: #10366e;
+  font-size: clamp(27px, 5vw, 36px);
+  font-weight: 900;
+  letter-spacing: 2px;
+  overflow-wrap: anywhere;
+}
+
+.bank-information h3 {
+  margin: 10px 0 0;
+  color: #17345e;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.copy-account {
+  width: 100%;
+  min-height: 52px;
+  padding: 13px 20px;
+  border: none;
+  border-radius: 12px;
+  background: #087b48;
+  color: white;
+  font-size: 14px;
+  font-weight: 900;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.copy-account:hover {
+  background: #05643a;
+  transform: translateY(-2px);
+}
+
+.bank-note {
+  margin: 18px 0 0;
+  color: #718198;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/* =========================================
+   11. KONTAK
+========================================= */
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.contact-card {
+  padding: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.contact-card > h3 {
+  margin: 0 0 28px;
+  color: #10366e;
+  font-size: 24px;
+  font-weight: 900;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-top: 22px;
+}
+
+.contact-item > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 14px;
+  background: #e2edff;
+  color: #155eef;
+  font-size: 23px;
+}
+
+.contact-item h4 {
+  margin: 0 0 7px;
+  color: #10366e;
+}
+
+.contact-item p {
+  margin: 0;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.social-description {
+  margin: -12px 0 25px;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.social-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 13px;
+}
+
+.social-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  color: #17345e;
+  background: #f8fbff;
+  transition: 0.3s ease;
+}
+
+.social-item:hover {
+  border-color: #60a5fa;
+  background: #eaf3ff;
+  transform: translateY(-3px);
+}
+
+.social-item img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.social-item span {
+  font-weight: 800;
+}
+
+/* =========================================
+   12. FOOTER
+========================================= */
+
+.site-footer {
+  padding: 55px 0 20px;
+  background: #041b3c;
+  color: white;
+}
+
+.footer-inner {
+  width: min(1300px, 90%);
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.footer-brand img {
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+}
+
+.footer-brand h3 {
+  margin: 0 0 7px;
+  font-size: 18px;
+}
+
+.footer-brand p {
+  margin: 0;
+  color: #a9c5ec;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: #c4d9f5;
+  font-size: 13px;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-bottom {
+  width: min(1300px, 90%);
+  margin: 35px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  color: #8eacd4;
+  text-align: center;
+  font-size: 12px;
+}
+
+/* =========================================
+   13. POPUP GALERI
+========================================= */
+
+.lightbox {
+  position: fixed;
+  z-index: 300;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: rgba(2, 14, 35, 0.94);
+  backdrop-filter: blur(10px);
+}
+
+.lightbox img {
+  max-width: min(100%, 1050px);
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 50%;
+  background: white;
+  color: #12345d;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* =========================================
+   14. RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .desktop-nav {
+    gap: 14px;
+  }
+
+  .desktop-nav a {
+    font-size: 12px;
+  }
+
+  .navbar {
+    gap: 12px;
+  }
+
+  .brand strong {
+    font-size: 18px;
+  }
+
+  .brand small {
+    font-size: 14px;
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .donation-inner {
+    gap: 30px;
+  }
+
+  .donation-option {
+    grid-template-columns: 145px minmax(0, 1fr);
+  }
+
+  .donation-option-content {
+    padding: 20px;
+  }
+}
+
+/* =========================================
+   15. RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+
+  .navbar {
+    min-height: 72px;
+    width: 90%;
+  }
+
+  .brand img {
+    width: 55px;
+    height: 58px;
+  }
+
+  .brand strong {
+    font-size: 16px;
+  }
+
+  .brand small {
+    font-size: 13px;
+  }
+
+  .desktop-nav,
+  .nav-donate {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 5% 20px;
+    background: white;
+    border-top: 1px solid #e6eef8;
+  }
+
+  .mobile-nav a {
+    padding: 13px;
+    border-radius: 10px;
+    color: #17345e;
+    font-weight: 700;
+  }
+
+  .mobile-nav a:hover {
+    background: #eaf3ff;
+    color: var(--blue);
+  }
+
+  /* HERO */
+
+  .hero {
+    min-height: auto;
+    padding: 75px 0 55px;
+    background-position: center;
+  }
+
+  .hero-content {
+    width: 90%;
+  }
+
+  .hero h1 {
+    font-size: clamp(35px, 9vw, 50px);
+    letter-spacing: -1px;
+  }
+
+  .hero-content > p {
+    font-size: 14px;
+  }
+
+  .hero-badge {
+    font-size: 11px;
+    padding: 11px 15px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+  }
+
+  .btn-yellow,
+  .btn-outline {
+    min-height: 48px;
+    padding: 12px 17px;
+    font-size: 13px;
+  }
+
+  .hero-highlight {
+    margin-top: 35px;
+    padding: 15px;
+  }
+
+  /* SECTION */
+
+  .content-section {
+    padding: 70px 0;
+  }
+
+  .section-inner {
+    width: 90%;
+  }
+
+  .section-heading {
+    margin-bottom: 35px;
+  }
+
+  .section-heading h2 {
+    font-size: 29px;
+  }
+
+  .section-heading p {
+    font-size: 14px;
+  }
+
+  /* TENTANG */
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-photo > img {
+    height: 300px;
+  }
+
+  .about-content h3 {
+    font-size: 25px;
+  }
+
+  /* KEGIATAN */
+
+  .activity-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .activity-image {
+    height: 230px;
+  }
+
+  /* GALERI */
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .gallery-card {
+    height: 170px;
+  }
+
+  .gallery-card span {
+    opacity: 1;
+    transform: none;
+    font-size: 11px;
+  }
+
+  /* DONASI */
+
+  .donation-section {
+    padding: 70px 0;
+  }
+
+  .donation-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 90%;
+    gap: 35px;
+  }
+
+  .donation-copy h2 {
+    font-size: 32px;
+    line-height: 1.25;
+  }
+
+  .donation-copy > p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .donation-options {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+  }
+
+  .donation-option {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    gap: 0;
+    border-radius: 20px;
+  }
+
+  .donation-emoji {
+    width: 100%;
+    height: 165px;
+    min-height: 165px;
+  }
+
+  .donation-emoji span {
+    width: 100px;
+    height: 100px;
+    font-size: 58px;
+  }
+
+  .donation-option-content {
+    width: 100%;
+    padding: 23px;
+  }
+
+  .donation-option-content h3 {
+    font-size: 21px;
+  }
+
+  .donation-option-content p {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  /* REKENING */
+
+  .bank-card {
+    padding: 25px;
+    border-radius: 20px;
+  }
+
+  .bank-logo img {
+    width: 75px;
+    height: 42px;
+  }
+
+  .bank-number {
+    font-size: 27px;
+    letter-spacing: 1px;
+  }
+
+  .bank-badge {
+    font-size: 9px;
+  }
+
+  /* KONTAK */
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .contact-card {
+    padding: 25px;
+  }
+
+  /* FOOTER */
+
+  .footer-inner {
+    width: 90%;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-brand img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .footer-links {
+    gap: 15px;
+  }
+
+  .footer-bottom {
+    width: 90%;
+    line-height: 1.7;
+  }
+
+  /* REKENING MULTI-BANK */
+
+  .bank-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+}
+
+/* =========================================
+   16. LAYAR SANGAT KECIL
+========================================= */
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .gallery-card {
+    height: 145px;
+  }
+
+  .donation-emoji {
+    height: 150px;
+    min-height: 150px;
+  }
+
+  .donation-option-content {
+    padding: 20px;
+  }
+
+  .bank-card {
+    padding: 20px;
+  }
+
+  .bank-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bank-number {
+    font-size: 24px;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   17. TIPOGRAFI
+========================================= */
+
+body {
+  font-family: var(--font-nunito), Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  font-optical-sizing: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand strong,
+.brand small,
+.desktop-nav,
+.mobile-nav,
+.nav-donate,
+.hero-badge,
+.btn-yellow,
+.btn-outline,
+.section-label,
+.about-label,
+.activity-body h3,
+.bank-number,
+.bank-information h3,
+.contact-card > h3,
+.footer-brand h3 {
+  font-family: var(--font-poppins), sans-serif;
+}
+
+p,
+.bank-label,
+.bank-note,
+.social-description {
+  font-family: var(--font-nunito), Arial, sans-serif;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* =========================================
+   18. AKSESIBILITAS
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* =========================================
+   PERBAIKAN LAYOUT REKENING DONASI
+========================================= */
+
+.bank-wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  justify-content: center;
+  gap: 28px !important;
+  width: min(1200px, 90%);
+  margin: 0 auto;
+}
+
+.bank-card {
+  width: 100% !important;
+  min-width: 0;
+  padding: 32px;
+  border-radius: 25px;
+  background: #ffffff;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+  overflow: hidden;
+}
+
+.bank-top {
+  flex-wrap: wrap;
+  row-gap: 15px;
+}
+
+.bank-logo {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.bank-number {
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   PERBAIKAN NAVBAR TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+  .navbar {
+    min-height: 76px;
+    width: 90%;
+    gap: 15px;
+  }
+
+  .desktop-nav,
+  .nav-donate {
+    display: none;
+  }
+
+  .mobile-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mobile-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 5% 20px;
+    background: #ffffff;
+    border-top: 1px solid #e6eef8;
+  }
+
+  .mobile-nav a {
+    padding: 13px;
+    border-radius: 10px;
+    color: #17345e;
+    font-weight: 700;
+  }
+}
+
+/* =========================================
+   PERBAIKAN LAYOUT MOBILE
+========================================= */
+
+@media (max-width: 760px) {
+  .bank-wrapper {
+    grid-template-columns: minmax(0, 1fr);
+    width: 90%;
+    gap: 22px !important;
+  }
+
+  .bank-card {
+    width: 100% !important;
+    padding: 24px;
+    border-radius: 20px;
+  }
+
+  .bank-top {
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .bank-logo img {
+    width: 70px;
+    height: 40px;
+  }
+
+  .bank-number {
+    font-size: clamp(23px, 7vw, 30px);
+    letter-spacing: 1px;
+  }
+
+  .bank-information {
+    padding: 23px 0;
+  }
+
+  .copy-account {
+    min-height: 50px;
+  }
+
+  .navbar {
+    width: 90%;
+    min-height: 72px;
+  }
+
+  .brand {
+    gap: 9px;
+  }
+
+  .brand img {
+    width: 52px;
+    height: 55px;
+  }
+
+  .brand strong {
+    font-size: 15px;
+  }
+
+  .brand small {
+    font-size: 12px;
+  }
+}
+
+/* =========================================
+   PERBAIKAN HP LAYAR KECIL
+========================================= */
+
+@media (max-width: 380px) {
+  .bank-card {
+    padding: 19px;
+  }
+
+  .bank-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .bank-badge {
+    font-size: 9px;
+  }
+
+  .bank-number {
+    font-size: 23px;
+  }
+
+  .brand strong {
+    font-size: 14px;
+  }
+}
