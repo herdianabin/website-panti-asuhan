@@ -80,15 +80,15 @@ const rekeningDonasi = [
     id: "bsi",
     nama: "BANK SYARIAH INDONESIA",
     logo: "/images/bsi.png",
-    nomor: "00000000",
-    pemilik: "xxxxxxxx",
+    nomor: "7006548062",
+    pemilik: "A.N HARAPAN REMAJA",
   },
   {
     id: "mandiri",
     nama: "BANK MANDIRI",
     logo: "/images/mandiri.png",
-    nomor: "00000000",
-    pemilik: "xxxxxxxx",
+    nomor: "0060010946857",
+    pemilik: "A.N PANTI ASUHAN HARAPAN REMAJA",
   },
 ];
 
